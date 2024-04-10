@@ -1,65 +1,141 @@
-_Support this and all my katas via [Patreon](https://www.patreon.com/EmilyBache)_
+# GildedRose Kata - PHP Version
 
-# Gilded Rose Refactoring Kata
+See the [top level readme](https://github.com/asimonyan/GildedRose-Refactoring-Kata?tab=readme-ov-file) for general information about this exercise. This is the PHP version of the
+GildedRose Kata.
 
-You can find out more about this exercise in my YouTube video [Why Developers LOVE The Gilded Rose Kata](https://youtu.be/Mt4XpGxigT4). I also have a video of a worked solution in Java - [Gilded Rose Kata, Hands-on](https://youtu.be/OdnV8hc9L7I)
+## Installation
 
-I use this kata as part of my work as a technical coach. I wrote a lot about the coaching method I use in this book [Technical Agile Coaching with the Samman method](https://leanpub.com/techagilecoach). A while back I wrote this article ["Writing Good Tests for the Gilded Rose Kata"](http://coding-is-like-cooking.info/2013/03/writing-good-tests-for-the-gilded-rose-kata/) about how you could use this kata in a [coding dojo](https://leanpub.com/codingdojohandbook).
+The kata uses:
 
+- [8.0+](https://www.php.net/downloads.php)
+- [Composer](https://getcomposer.org)
 
-## How to use this Kata
+Recommended:
 
-The simplest way is to just clone the code and start hacking away improving the design. You'll want to look at the ["Gilded Rose Requirements"](https://github.com/emilybache/GildedRose-Refactoring-Kata/blob/main/GildedRoseRequirements.md) which explains what the code is for. I strongly advise you that you'll also need some tests if you want to make sure you don't break the code while you refactor.
+- [Git](https://git-scm.com/downloads)
 
-You could write some unit tests yourself, using the requirements to identify suitable test cases. I've provided a failing unit test in a popular test framework as a starting point for most languages.
+See [GitHub cloning a repository](https://help.github.com/en/articles/cloning-a-repository) for details on how to
+create a local copy of this project on your computer.
 
-Alternatively, use the Approval tests provided in this repository. (Read more about that in the section "Text-based Approval Testing").
+```sh
+git clone git@github.com:asimonyan/GildedRose-Refactoring-Kata.git
+```
+Install all the dependencies using composer
 
-The idea of the exercise is to do some deliberate practice, and improve your skills at designing test cases and refactoring. The idea is not to re-write the code from scratch, but rather to practice taking small steps, running the tests often, and incrementally improving the design. 
+```shell script
+cd ./GildedRose-Refactoring-Kata/php
+composer install
+```
 
-Please don't send me a pull request with your solution. It can be a bit confusing since GitHub encourages you to do so! Please only send me pull requests if you have a correction or improvement to the starting position. You don't want to spoil the fun of doing the exercise for other people!
+## Dependencies
 
+The project uses composer to install:
 
-### Gilded Rose Requirements in other languages 
+- [PHPUnit](https://phpunit.de/)
+- [ApprovalTests.PHP](https://github.com/approvals/ApprovalTests.php)
+- [PHPStan](https://github.com/phpstan/phpstan)
+- [Easy Coding Standard (ECS)](https://github.com/symplify/easy-coding-standard)
 
-- [English](GildedRoseRequirements.md)
-- [Español](GildedRoseRequirements_es.md)
-- [Français](GildedRoseRequirements_fr.md)
-- [Italiano](GildedRoseRequirements_it.md)
-- [日本語](GildedRoseRequirements_jp.md)
-- [Português](GildedRoseRequirements_pt-BR.md)
-- [Русский](GildedRoseRequirements_ru.txt)
-- [ไทย](GildedRoseRequirements_th.md)
-- [中文](GildedRoseRequirements_zh.txt)
-- [한국어](GildedRoseRequirements_kr.md)
-- [German](GildedRoseRequirements_de.md)
-- [Euskara](GildedRoseRequirements_eu.md)
+## Folders
 
-## Text-Based Approval Testing
+- `src` - contains the two classes:
+    - `Item.php` - this class should not be changed
+    - `GildedRose.php` - this class needs to be refactored, and the new feature added
+- `tests` - contains the tests
+    - `GildedRoseTest.php` - starter test.
+        - Tip: ApprovalTests has been included as a dev dependency, see the PHP version of
+          the [Theatrical Players Refactoring Kata](https://github.com/emilybache/Theatrical-Players-Refactoring-Kata/)
+          for an example
+- `Fixture`
+    - `texttest_fixture.php` this could be used by an ApprovalTests, or run from the command line
 
-Most language versions of this code have a [TextTest](https://texttest.org) fixture for Approval testing. For information about this, see the [TextTests README](https://github.com/emilybache/GildedRose-Refactoring-Kata/tree/main/texttests)
+## Fixture
 
-## History of the exercise
+To run the fixture from the php directory:
 
-This Kata was originally created by Terry Hughes (http://twitter.com/TerryHughes). It is already on GitHub [here](https://github.com/NotMyself/GildedRose). See also [Bobby Johnson's description of the kata](https://iamnotmyself.com/refactor-this-the-gilded-rose-kata/).
+```shell
+php .\fixtures\texttest_fixture.php 10
+```
 
-I translated the original C# into a few other languages, (with a little help from my friends!), and slightly changed the starting position. This means I've actually done a small amount of refactoring already compared with the original form of the kata, and made it easier to get going with writing tests by giving you one failing unit test to start with. I also added test fixtures for Text-Based approval testing with TextTest (see [the TextTests](https://github.com/emilybache/GildedRose-Refactoring-Kata/tree/main/texttests))
+Change **10** to the required days.
 
-As Bobby Johnson points out in his article ["Why Most Solutions to Gilded Rose Miss The Bigger Picture"](https://iamnotmyself.com/why-most-solutions-to-gilded-rose-miss-the-bigger-picture/), it'll actually give you
-better practice at handling a legacy code situation if you do this Kata in the original C#. However, I think this kata
-is also really useful for practicing writing good tests using different frameworks and approaches, and the small changes I've made help with that. I think it's also interesting to compare what the refactored code and tests look like in different programming languages.
+## Testing
 
-## Translating this code
+PHPUnit is configured for testing, a composer script has been provided. To run the unit tests, from the root of the PHP
+project run:
 
-More translations are most welcome! I'm very open for pull requests that translate the starting position into additional languages. 
+```shell script
+composer tests
+```
 
-Please note a translation should ideally include:
+A Windows a batch file has been created, like an alias on Linux/Mac (e.g. `alias pu="composer tests"`), the same
+PHPUnit `composer tests` can be run:
 
-- a translation of the production code for 'update_quality' and Item
-- one failing unit test complaining that "fixme" != "foo"
-- a TextTest fixture, ie a command-line program that runs update_quality on the sample data for the number of days specified.
+```shell script
+pu.bat
+```
 
-Please don't write too much code in the starting position or add too many unit tests. The idea with the one failing unit test is to tempt people to work out how to fix it, discover it wasn't that hard, and now they understand what this test is doing they realize they can improve it.  
+### Tests with Coverage Report
 
-If your programming language doesn't have an easy way to add a command-line interface, then the TextTest fixture is probably not necessary.
+To run all test and generate a html coverage report run:
 
+```shell script
+composer test-coverage
+```
+
+The test-coverage report will be created in /builds, it is best viewed by opening /builds/**index.html** in your
+browser.
+
+The [XDEbug](https://xdebug.org/download) extension is required for generating the coverage report.
+
+## Code Standard
+
+Easy Coding Standard (ECS) is configured for style and code standards, **PSR-12** is used. The current code is not upto
+standard!
+
+### Check Code
+
+To check code, but not fix errors:
+
+```shell script
+composer check-cs
+``` 
+
+On Windows a batch file has been created, like an alias on Linux/Mac (e.g. `alias cc="composer check-cs"`), the same
+PHPUnit `composer check-cs` can be run:
+
+```shell script
+cc.bat
+```
+
+### Fix Code
+
+ECS provides may code fixes, automatically, if advised to run --fix, the following script can be run:
+
+```shell script
+composer fix-cs
+```
+
+On Windows a batch file has been created, like an alias on Linux/Mac (e.g. `alias fc="composer fix-cs"`), the same
+PHPUnit `composer fix-cs` can be run:
+
+```shell script
+fc.bat
+```
+
+## Static Analysis
+
+PHPStan is used to run static analysis checks:
+
+```shell script
+composer phpstan
+```
+
+On Windows a batch file has been created, like an alias on Linux/Mac (e.g. `alias ps="composer phpstan"`), the same
+PHPUnit `composer phpstan` can be run:
+
+```shell script
+ps.bat
+```
+
+**Happy coding**!
